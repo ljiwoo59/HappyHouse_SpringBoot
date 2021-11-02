@@ -59,7 +59,7 @@ public class LoginController {
 		logger.debug("pwd : {}" , userDto.getPassword());
 		logger.debug("name : {}" , userDto.getName());
 		logger.debug("address : {}" , userDto.getAddress());
-		System.out.println("뭐여 시벌");
+	
 		service.insert(userDto);
 		if(userDto.getId() != null) {
 			return "redirect:/";
@@ -71,7 +71,7 @@ public class LoginController {
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		session.invalidate();
+		session.setAttribute("userinfo", null);
 		return "redirect:/";
 	}
 }

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +20,7 @@
 			<h4>행복한 우리 집</h4> 
 		</header>
 		<!-- nav start -->
+		<c:if test="${empty userinfo}">
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded" id="NoneLoginPage">
 			<ul class="navbar-nav">
 				<li class="nav-item">
@@ -52,7 +56,10 @@
 				</li>
 			</ul>
 		</nav>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded" id="LoginPage" style="display: none">
+		</c:if>
+
+		<c:if test="${!empty userinfo}">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded" id="LoginPage">
 			<ul class="navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link" href="#">Home</a>
@@ -80,13 +87,14 @@
 					<a class="nav-link" href="#">Contact</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">로그아웃</a>
+					<a class="nav-link" href="userinfo.html">회원정보</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">MyPage</a>
+					<a class="nav-link" href="user/logout">로그아웃</a>
 				</li>
 			</ul>
 		</nav>
+		</c:if>
 
 		<section id="index_section">
 			<div class="card col-sm-12 mt-1" style="min-height: 850px;">
