@@ -192,17 +192,6 @@
                                         .append($('<td>').text(vo.recentPrice))
                                         .appendTo('tbody');
                                 });
-								/*$.each(data, function(index, vo) {
-									let str = `
-										<tr class="${colorArr[index%3]}">
-										<td>${vo.aptCode}</td>
-										<td>${vo.aptName}</td>
-										<td>${vo.sidoName} ${vo.gugunName} ${vo.dongName} ${vo.jibun}</td>
-										<td>${vo.buildYear}</td>
-										<td>${vo.recentPrice}</td>
-									`;
-									$("tbody").append(str);
-								});*/
 								displayMarkers(data);
 							}
 							, "json"
@@ -222,17 +211,6 @@
                                         .append($('<td>').text(vo.recentPrice))
                                         .appendTo('tbody');
                                 });
-								/*$.each(data, function(index, vo) {
-									let str = `
-										<tr class="${colorArr[index%3]}">
-										<td>${vo.aptCode}</td>
-										<td>${vo.aptName}</td>
-										<td>${vo.sidoName} ${vo.gugunName} ${vo.dongName} ${vo.jibun}</td>
-										<td>${vo.buildYear}</td>
-										<td>${vo.recentPrice}</td>
-									`;
-									$("tbody").append(str);
-								});*/
 								displayMarkers(data);
 							}
 							, "json"

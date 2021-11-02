@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssafy.happyhouse.model.UserDto;
 import com.ssafy.happyhouse.model.service.UserService;
@@ -24,7 +22,7 @@ import com.ssafy.happyhouse.model.service.UserService;
 @RequestMapping("user/")
 public class LoginController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
 	private UserService service;
@@ -80,6 +78,25 @@ public class LoginController {
 		return "userinfo";
 	}
 	
+	@PostMapping("/update")
+	public String update(UserDto userDto, HttpSession session) {
+		System.out.println(userDto.getId());
+		System.out.println(userDto.getPassword());
+		System.out.println(userDto.getName());
+		System.out.println(userDto.getAddress());
+		
+		
+		service.update(userDto);
+		session.setAttribute("userinfo", userDto);
+		return "redirect:/";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(String id, HttpSession session) {
+		service.delete(id);
+		logout(session);
+		return "redirect:/";
+	}
 	
 	
 }
