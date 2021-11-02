@@ -11,5 +11,5 @@ public interface HappyHouseMapService {
 	List<SidoGugunCodeDto> getGugunInSido(String sido) throws Exception;
 	List<HouseInfoDto> getDongInGugun(String gugun) throws Exception;
 	List<HouseInfoDto> getAptInDong(String dong) throws Exception;
-	
+	List<HouseInfoDto> getAptName(String aptNam) throws Exception;
 }

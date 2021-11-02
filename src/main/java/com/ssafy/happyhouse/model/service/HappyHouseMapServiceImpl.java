@@ -36,4 +36,9 @@ public class HappyHouseMapServiceImpl implements HappyHouseMapService {
 		return sqlSession.getMapper(HouseMapMapper.class).getAptInDong(dong);
 	}
 
+	@Override
+	public List<HouseInfoDto> getAptName(String aptName) throws Exception {
+		return sqlSession.getMapper(HouseMapMapper.class).getAptName(aptName);
+	}
+
 }
