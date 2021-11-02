@@ -29,14 +29,6 @@ public class LoginController {
 	@Autowired
 	private UserService service;
 	
-	@GetMapping("/idcheck")
-	public @ResponseBody String idCheck(@RequestParam("ckid") String checkId) throws Exception {
-		int idCount = service.idCheck(checkId);
-		JSONObject json = new JSONObject();
-		json.put("idcount", idCount);
-		return json.toString();
-	}
-
 	@GetMapping("/login")
 	public String login() {
 		return "user/login";
@@ -45,8 +37,8 @@ public class LoginController {
 	@PostMapping("/login")
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session,
 			HttpServletResponse response) throws Exception {
-		logger.debug("map : {}", map.get("userId"));
-		logger.debug("map : {}", map.get("userpwd"));
+		logger.debug("map : {}", map.get("id"));
+		logger.debug("map : {}", map.get("password"));
 		UserDto userDto = service.login(map);
 		if (userDto != null) {
 			session.setAttribute("userinfo", userDto);

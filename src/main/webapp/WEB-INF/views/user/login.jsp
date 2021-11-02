@@ -20,10 +20,10 @@
         });
         
         function login() {
-        	if (!$("#userid").val()) {
+        	if (!$("#id").val()) {
                 alert("아이디 입력!!!");
                 return;
-            } else if (!$("#userpwd").val()) {
+            } else if (!$("#password").val()) {
                 alert("비밀번호 입력!!!");
                 return;
             } else {
@@ -38,12 +38,12 @@
             <h2 >로그인</h2>
             <form id="loginform" class="text-left mb-3" method="post" action="">
                 <div class="form-group">
-                    <label for="userid">아이디</label>
-                    <input type="text" class="form-control" id="userid" name="userId">
+                    <label for="id">아이디</label>
+                    <input type="text" class="form-control" id="id" name="id">
                 </div>
                 <div class="form-group">
-                    <label for="userpwd">비밀번호</label>
-                    <input type="password" class="form-control" id="userpwd" name="userPwd">
+                    <label for="password">비밀번호</label>
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="text-danger mb-2">${msg}</div>
                 <div class="form-group text-center">

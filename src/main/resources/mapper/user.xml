@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="login" parameterType="map" resultType="UserDto">
-		select * from user where id = #{userid} and password = #{userpwd}
+		select * from user where id = #{id} and password = #{password}
 	</select>
 	
 	

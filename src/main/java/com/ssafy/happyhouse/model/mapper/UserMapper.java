@@ -14,7 +14,6 @@ public interface UserMapper {
 	public List<UserDto> findByAddress(String address);
 	public int update(UserDto c);
 	public UserDto login(UserDto c);
-	public int idCheck(String checkId);
 	public UserDto login(Map<String, String> map);
 	
 }

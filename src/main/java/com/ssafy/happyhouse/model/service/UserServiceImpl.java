@@ -47,11 +47,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int idCheck(String checkId) throws Exception {
-		return sqlSession.getMapper(UserMapper.class).idCheck(checkId); // 0 or 1
-	}
-
-	@Override
 	public UserDto login(Map<String, String> map) throws Exception {
 		return sqlSession.getMapper(UserMapper.class).login(map);
 	}
