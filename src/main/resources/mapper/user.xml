@@ -25,7 +25,15 @@
 	</delete>
 
 	<select id="findByAddress" parameterType="String" resultType="UserDto">
-	    select * from user where user = #{user}
-	  </select>
-
+	    select * from user where address = #{address}
+	</select>
+	
+	<select id="login" parameterType="map" resultType="UserDto">
+		select * from user where id = #{userid} and password = #{userpwd}
+	</select>
+	
+	
+	
+	
+	
 </mapper>

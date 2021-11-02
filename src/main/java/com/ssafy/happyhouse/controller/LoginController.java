@@ -46,6 +46,7 @@ public class LoginController {
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session,
 			HttpServletResponse response) throws Exception {
 		logger.debug("map : {}", map.get("userId"));
+		logger.debug("map : {}", map.get("userpwd"));
 		UserDto userDto = service.login(map);
 		if (userDto != null) {
 			session.setAttribute("userinfo", userDto);

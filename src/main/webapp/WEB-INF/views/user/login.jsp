@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:if test="${cookie.ssafy_id.value ne null}">
-	<c:set var="idck" value=" checked"/>
-	<c:set var="saveid" value="${cookie.ssafy_id.value}"/>
-</c:if>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-        	$("#userpwd").keydown(function(key) {
-                if (key.keyCode == 13) {
-                    login();
-                }
-            });
-
             $("#loginBtn").click(function () {
                 login();
             });
@@ -33,23 +31,19 @@
             }
         }
     </script>
-
+	</head>
+	<body>
     <div class="container text-center mt-3">
         <div class="col-lg-8 mx-auto">
-            <h2 class="p-3 mb-3 shadow bg-light"><mark class="orange">로그인</mark></h2>
+            <h2 >로그인</h2>
             <form id="loginform" class="text-left mb-3" method="post" action="">
-                <div class="form-group form-check text-right">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="idsave" name="idsave" value="saveok"${idck}> 아이디저장
-                    </label>
-                </div>
                 <div class="form-group">
                     <label for="userid">아이디</label>
-                    <input type="text" class="form-control" id="userid" name="userId" placeholder="" value="${saveid}">
+                    <input type="text" class="form-control" id="userid" name="userId">
                 </div>
                 <div class="form-group">
                     <label for="userpwd">비밀번호</label>
-                    <input type="password" class="form-control" id="userpwd" name="userPwd" placeholder="">
+                    <input type="password" class="form-control" id="userpwd" name="userPwd">
                 </div>
                 <div class="text-danger mb-2">${msg}</div>
                 <div class="form-group text-center">
