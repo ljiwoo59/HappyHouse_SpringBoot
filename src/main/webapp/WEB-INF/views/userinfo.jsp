@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,15 +73,6 @@
 			}
 		})
 	}
-	
-	
-	
-	function init(){
-		$('#id').val(${userinfo.id});
-		$('#password').val(${userinfo.password});
-		$('#name').val(${userinfo.name});
-		$('#address').val(${userinfo.address});
-	}
 </script>
 
 </head>
@@ -88,18 +81,18 @@
 		<form id="form1" class="form-horizontal">
 			<h2>My Page</h2>
 			<div class="form-group">
-				<label>아이디:</label> <input type="text" class="form-control" id="id">
+				<label>아이디:</label> <input type="text" class="form-control" id="id" value = "${userinfo.id}">
 			</div>
 			<div class="form-group">
-				<label>비밀번호:</label> <input type="text" class="form-control" id="password">
+				<label>비밀번호:</label> <input type="text" class="form-control" id="password" value = "${userinfo.password}">
 			</div>
 			<div class="form-group">
-				<label>이름:</label> <input type="text" class="form-control" id="name">
+				<label>이름:</label> <input type="text" class="form-control" id="name" value = "${userinfo.name}">
 			</div>
 
 			<div class="form-group">
 				<label>주소:</label> <input type="text" class="form-control"
-					id="address">
+					id="address" value = "${userinfo.address}">
 			</div>
 
 			<div class="btn-group">

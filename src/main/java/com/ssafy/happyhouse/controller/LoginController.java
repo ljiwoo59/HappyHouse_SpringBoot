@@ -74,4 +74,12 @@ public class LoginController {
 		session.setAttribute("userinfo", null);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/mypage")
+	public String myPage() {
+		return "userinfo";
+	}
+	
+	
+	
 }

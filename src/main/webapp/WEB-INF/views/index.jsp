@@ -87,7 +87,7 @@
 					<a class="nav-link" href="#">Contact</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="userinfo.html">회원정보</a>
+					<a class="nav-link" href="user/mypage">회원정보</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="user/logout">로그아웃</a>
@@ -185,6 +185,14 @@
 							,function(data, status){
 								$("tbody").empty();
 								$.each(data, function(index, vo) {
+                                    $('<tr>').append($('<td>').text(vo.aptCode))
+                                        .append($('<td>').text(vo.aptName))
+                                        .append($('<td>').text(vo.sidoName + vo.gugunName + vo.dongName + vo.jibun))
+                                        .append($('<td>').text(vo.buildYear))
+                                        .append($('<td>').text(vo.recentPrice))
+                                        .appendTo('tbody');
+                                });
+								/*$.each(data, function(index, vo) {
 									let str = `
 										<tr class="${colorArr[index%3]}">
 										<td>${vo.aptCode}</td>
@@ -194,7 +202,7 @@
 										<td>${vo.recentPrice}</td>
 									`;
 									$("tbody").append(str);
-								});
+								});*/
 								displayMarkers(data);
 							}
 							, "json"
@@ -207,6 +215,14 @@
 							,function(data, status){
 								$("tbody").empty();
 								$.each(data, function(index, vo) {
+                                    $('<tr>').append($('<td>').text(vo.aptCode))
+                                        .append($('<td>').text(vo.aptName))
+                                        .append($('<td>').text(vo.sidoName + vo.gugunName + vo.dongName + vo.jibun))
+                                        .append($('<td>').text(vo.buildYear))
+                                        .append($('<td>').text(vo.recentPrice))
+                                        .appendTo('tbody');
+                                });
+								/*$.each(data, function(index, vo) {
 									let str = `
 										<tr class="${colorArr[index%3]}">
 										<td>${vo.aptCode}</td>
@@ -216,7 +232,7 @@
 										<td>${vo.recentPrice}</td>
 									`;
 									$("tbody").append(str);
-								});
+								});*/
 								displayMarkers(data);
 							}
 							, "json"
