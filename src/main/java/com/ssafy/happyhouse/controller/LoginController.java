@@ -48,6 +48,26 @@ public class LoginController {
 			return "user/login";
 		}
 	}
+	@GetMapping("/register")
+	public String register() {
+		return "user/join";
+	}
+	
+	@PostMapping("/register")
+	public String register(UserDto userDto, Model model) throws Exception{
+		logger.debug("id : {}" , userDto.getId());
+		logger.debug("pwd : {}" , userDto.getPassword());
+		logger.debug("name : {}" , userDto.getName());
+		logger.debug("address : {}" , userDto.getAddress());
+		System.out.println("뭐여 시벌");
+		service.insert(userDto);
+		if(userDto.getId() != null) {
+			return "redirect:/";
+		}else {
+			model.addAttribute("msg", "회원 가입에 실패하셨습니다.");
+			return "user/register";
+		}
+	}
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {

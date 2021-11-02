@@ -15,5 +15,4 @@ public interface UserMapper {
 	public int update(UserDto c);
 	public UserDto login(UserDto c);
 	public UserDto login(Map<String, String> map);
-	
 }

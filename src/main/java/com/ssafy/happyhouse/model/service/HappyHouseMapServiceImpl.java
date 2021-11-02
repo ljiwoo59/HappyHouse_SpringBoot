@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.ssafy.happyhouse.model.HouseInfoDto;
 import com.ssafy.happyhouse.model.SidoGugunCodeDto;
+import com.ssafy.happyhouse.model.UserDto;
 import com.ssafy.happyhouse.model.mapper.HouseMapMapper;
+import com.ssafy.happyhouse.model.mapper.UserMapper;
 
 @Service
 public class HappyHouseMapServiceImpl implements HappyHouseMapService {
@@ -39,6 +41,11 @@ public class HappyHouseMapServiceImpl implements HappyHouseMapService {
 	@Override
 	public List<HouseInfoDto> getAptName(String aptName) throws Exception {
 		return sqlSession.getMapper(HouseMapMapper.class).getAptName(aptName);
+	}
+
+	@Override
+	public void insert(UserDto userDto) throws Exception {
+		sqlSession.getMapper(UserMapper.class).insert(userDto);
 	}
 
 }
