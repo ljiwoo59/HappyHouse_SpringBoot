@@ -1,6 +1,7 @@
 package com.ssafy.happyhouse.model.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ssafy.happyhouse.model.UserDto;
 
@@ -12,5 +13,8 @@ public interface UserMapper {
 	public int delete(String id);
 	public List<UserDto> findByAddress(String address);
 	public int update(UserDto c);
+	public UserDto login(UserDto c);
+	public int idCheck(String checkId);
+	public UserDto login(Map<String, String> map);
 	
 }

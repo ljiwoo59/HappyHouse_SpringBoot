@@ -1,6 +1,7 @@
 package com.ssafy.happyhouse.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int update(UserDto c) {
 		return sqlSession.getMapper(UserMapper.class).update(c);
+	}
+
+	@Override
+	public int idCheck(String checkId) throws Exception {
+		return sqlSession.getMapper(UserMapper.class).idCheck(checkId); // 0 or 1
+	}
+
+	@Override
+	public UserDto login(Map<String, String> map) throws Exception {
+		return sqlSession.getMapper(UserMapper.class).login(map);
 	}
 
 }

@@ -11,30 +11,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.UserDto;
 import com.ssafy.happyhouse.model.service.UserService;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
 	private UserService service;
 	
-	@GetMapping
+	@GetMapping(value="user")
 	public List<UserDto> selectAll(){		
 		return service.selectAll();
 	}
 	
-	@GetMapping(value="/{id}")
+	@GetMapping(value="user/{id}")
 	public UserDto selectOne(@PathVariable String id) {
 		return service.selectOne(id);
 	}
 	
-	@PostMapping
+	@PostMapping(value="user")
 	public Map<String, String> insert(@RequestBody UserDto c) {
 		service.insert(c);
 		
@@ -43,7 +41,7 @@ public class UserController {
 		return map;
 	}
 	
-	@PutMapping
+	@PutMapping(value="user")
 	public Map<String, String> update(@RequestBody UserDto c) { //@RequestBody: json -> java
 		service.update(c);
 		
@@ -52,7 +50,7 @@ public class UserController {
 		return map;
 	}
 	
-	@DeleteMapping(value="/{id}")
+	@DeleteMapping(value="user/{id}")
 	public Map<String, String> delete(@PathVariable String id) {
 		service.delete(id);
 		
@@ -61,8 +59,10 @@ public class UserController {
 		return map;
 	}
 	
-	@GetMapping(value="/find/{address}")
+	@GetMapping(value="user/find/{address}")
 	public List<UserDto> search(@PathVariable String address) {
 		return service.findByAddress(address);
 	}
+
+
 }

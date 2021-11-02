@@ -14,7 +14,6 @@
 		customerSelect(); // 한사람 선택시 정보 받아올 이벤트 등록
 		customerDelete(); // 삭제버튼 클릭시 이벤트 등록
 		customerUpdate(); // 수정버튼 클릭시 이벤트 등록
-		customerInsert(); // 추가버튼 클릭시 이벤트 등록
 		customerSearch();
 		customerAll();
 		init(); // 입력칸 지우는 이벤트 등록
@@ -87,37 +86,6 @@
 				})
 			} else {
 				alert("수정할 정보를 입력해 주세요!");
-			}
-		})
-	}
-	
-	function customerInsert(){
-		$('#btnInsert').on('click', function() {
-			// 1. 입력값 알아오기
-			var id = $('#id').val();
-			var password = $('#password').val();
-			var name = $('#name').val();
-			var address = $('#address').val();
-			
-			if (id != "" && password != "" && name != "" && address !="") {
-			// 2. ajax 요청
-				$.ajax({
-					url: 'user',
-					type: 'post',
-					data: JSON.stringify({ // json 객체를 문자열 형식으로
-						id: id,
-						password: password,
-						name: name,
-						address: address
-					}),
-					contentType: 'application/json', // 서버로 보내는 데이터 형식
-					success: function() {
-						clear();
-						customerList();
-					}
-				})
-			} else {
-				alert("추가할 정보를 입력해 주세요!");
 			}
 		})
 	}
@@ -219,8 +187,7 @@
 					id="address">
 			</div>
 
-			<div class="btn-group">
-				<input type="button" class="btn btn-primary" value="등록" 	id="btnInsert" /> 
+			<div class="btn-group"> 
 					<input type="button" class="btn btn-primary" value="수정" id="btnUpdate" /> 
 					<input type="button" class="btn btn-primary" value="삭제" id="btnDelete" /> 
 					<input type="button" class="btn btn-primary" value="검색" id="btnSearch" /> 
