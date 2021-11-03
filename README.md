@@ -1,7 +1,15 @@
 # HappyHouse_SpringBoot
-### HappyHouse SpringBoot 구현
 
+## 메인 페이지
+<img src = "https://user-images.githubusercontent.com/54715744/140030482-40e9a4ce-ca2a-4e07-9a6f-5abbc5c919bf.PNG" width="100%" height="60%">
 
+## 동별 검색
+<img src = "https://user-images.githubusercontent.com/54715744/140030714-718800a8-5d51-4a2d-a144-e87bf1e1ead3.PNG" width="100%" height="60%">
+
+## 아파트 검색
+<img src = "https://user-images.githubusercontent.com/54715744/140030762-1c379580-387b-4e7b-bf26-604d1ccd4e8d.PNG" width="100%" height="60%">
+
+---
 
 ## 기능
 * 주택 실거래가 정보 수집
