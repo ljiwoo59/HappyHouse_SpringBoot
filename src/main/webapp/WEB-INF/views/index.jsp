@@ -17,7 +17,8 @@
 <body>
 	<div class="container">
 		<header id="index_header" class="jumbotron text-center mb-1">
-			<h4>행복한 우리 집</h4> 
+			<h4>행복한 우리 집</h4>
+			<div id="latlng" name="latlng" style="display: none"></div>
 		</header>
 		<!-- nav start -->
 		<c:if test="${empty userinfo}">
@@ -153,14 +154,19 @@
 				let colorArr = ['table-primary','table-success','table-danger'];
 				
 				
-				
+				if(null != "${userinfo.id}"){
+					var geocoder = new kakao.maps.services.Geocoder();
+					geocoder.addressSearch("${userinfo.address}", function(result, status){
+						if (status == kakao.maps.services.Status.OK) {
+							$("#latlng").append("<input type='text' id='lat' name='lat' value = " + result[0].y +">")
+									.append("<input type='text' id='lng' name='lng' value = " + result[0].x +">");
+						}else{
+							$("#latlng").append("<input type='text' id='lat' name='lat' value = 'lat'>")
+							.append("<input type='text' id='lng' name='lng' value = 'lng'>");
+						}
+					});
+				}				
 				$(document).ready(function(){	
-					map();
-					wordlist();
-				});
-				
-				
-				function map() {
 					$.get(root + "/map/sido"
 							,function(data, status){
 								$.each(data, function(index, vo) {
@@ -169,7 +175,8 @@
 							}
 							, "json"
 						);
-				}
+					wordlist();
+				});
 				
 				function wordlist() {
 					$.ajax({
@@ -239,7 +246,7 @@
 				
 				$(document).on("click", "#aptNameSearchBtn", function(){
 					$.get(root + "/map/searchaptName"
-							,{aptName: $("#aptSearchTextBox").val()}
+							,{aptName: $("#aptSearchTextBox").val(), lat : $("#lat").val(), lng : $("#lng").val()}
 							,function(data, status){
 								$("#searchResult").empty();
 								$.each(data, function(index, vo) {

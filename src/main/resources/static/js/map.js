@@ -69,6 +69,23 @@ function displayMarkers(places) {
 	map.setBounds(bounds);
 }
 
+/*function getMyLocation(myAddress){
+	geocoder.addressSearch(myAddress, function(result, status){
+		if (status == kakao.maps.services.Status.OK) {
+			const coor = [result[0].y, result[0].x];
+			
+			console.log(coor[0] + " " + coor[1]);
+			
+			return coor;
+		}else {
+			const coor = ["37.566826", "126.9786567"];
+			return coor;
+		}
+	});
+}*/
+
+
+
 //마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, idx, title) {
 	var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다

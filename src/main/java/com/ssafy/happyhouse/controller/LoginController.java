@@ -79,13 +79,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/update")
-	public String update(UserDto userDto, HttpSession session) {
-		System.out.println(userDto.getId());
-		System.out.println(userDto.getPassword());
-		System.out.println(userDto.getName());
-		System.out.println(userDto.getAddress());
-		
-		
+	public String update(UserDto userDto, HttpSession session) {		
 		service.update(userDto);
 		session.setAttribute("userinfo", userDto);
 		return "redirect:/";
