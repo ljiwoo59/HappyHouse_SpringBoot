@@ -47,10 +47,5 @@
 		where aptName like concat('%',#{aptName},'%')
 		order by aptName
 	</select>
-	
-	
-	
-	
-	
 
 </mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.WordMapper">
+
+	<insert id="wordInsert" parameterType="string">
+		insert into wordcount values(#{aptName}, 1)
+	</insert>
+	
+	<update id="wordCount" parameterType="string">
+		update wordcount set count = count + 1 where word = #{aptName}
+	</update>
+	
+	<select id="selectOne" parameterType="string" resultType="WordDto">
+		select word,count from wordcount where word = #{aptName}
+	</select>
+
+	<select id="selectTop" resultType="WordDto">
+		select word from wordcount order by count desc limit 5
+	</select>
+
+</mapper>

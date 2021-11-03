@@ -24,7 +24,7 @@
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded" id="NoneLoginPage">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Home</a>
+					<a class="nav-link" href="/">Home</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -125,7 +125,7 @@
 							<col width="120">
 						</colgroup>	
 						<thead>
-							<tr>
+							<tr id="apt">
 								<th>번호</th>
 								<th>아파트이름</th>
 								<th class="text-center">주소</th>
@@ -136,6 +136,17 @@
 						<tbody id="searchResult"></tbody>
 					</table>
 				<div id="map" style="width:100%;height:500px;"></div>
+					<table class="table mt-2" style="text-align:center;width:60%;margin:auto">
+						<colgroup>
+							<col width="100">
+						</colgroup>	
+						<thead>
+							<tr>
+								<th>인기 검색어</th>
+							</tr>
+						</thead>
+						<tbody id="wordcount"></tbody>
+					</table>
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f12ba6e50ade3f00c98658f5fb8dd567&libraries=services"></script>
 				<script type="text/javascript" src="js/map.js"></script>
 				<script type="text/javascript">
@@ -143,16 +154,43 @@
 				
 				
 				
-				$(document).ready(function(){					
-					$.get(root + "/map/sido"
-						,function(data, status){
-							$.each(data, function(index, vo) {
-								$("#sido").append("<option value='"+vo.sidoCode+"'>"+vo.sidoName+"</option>");
-							});
-						}
-						, "json"
-					);
+				$(document).ready(function(){	
+					map();
+					wordlist();
 				});
+				
+				
+				function map() {
+					$.get(root + "/map/sido"
+							,function(data, status){
+								$.each(data, function(index, vo) {
+									$("#sido").append("<option value='"+vo.sidoCode+"'>"+vo.sidoName+"</option>");
+								});
+							}
+							, "json"
+						);
+				}
+				
+				function wordlist() {
+					$.ajax({
+						url: 'http://localhost/word',
+						type: 'get',
+						dataType: 'json', // 서버가 보내주는 데이터 타입
+						success: function(result){
+							$('#wordcount').empty();
+							$.each(result, function(index, item){
+								$('<tr>')
+								.append($('<td>').text(item.word))
+								.appendTo('#wordcount');
+							})
+						},
+						error: function(xhr, status, msg){
+							alert("상태값: " + status + " 에러메시지: " + msg);
+						}
+					});
+				}
+				
+				
 				$(document).on("change", "#sido", function() {
 					$.get(root + "/map/gugun"
 							,{sido: $("#sido").val()}
@@ -183,17 +221,18 @@
 					$.get(root + "/map/apt"
 							,{dong: $("#dong").val()}
 							,function(data, status){
-								$("tbody").empty();
+								$('#searchResult').empty();
 								$.each(data, function(index, vo) {
                                     $('<tr>').append($('<td>').text(vo.aptCode))
                                         .append($('<td>').text(vo.aptName))
                                         .append($('<td>').text(vo.sidoName + vo.gugunName + vo.dongName + vo.jibun))
                                         .append($('<td>').text(vo.buildYear))
                                         .append($('<td>').text(vo.recentPrice))
-                                        .appendTo('tbody');
+                                        .appendTo('#searchResult');
                                 });
 								displayMarkers(data);
-							}
+							},
+							wordlist()
 							, "json"
 					);
 				});
@@ -202,17 +241,18 @@
 					$.get(root + "/map/searchaptName"
 							,{aptName: $("#aptSearchTextBox").val()}
 							,function(data, status){
-								$("tbody").empty();
+								$("#searchResult").empty();
 								$.each(data, function(index, vo) {
                                     $('<tr>').append($('<td>').text(vo.aptCode))
                                         .append($('<td>').text(vo.aptName))
                                         .append($('<td>').text(vo.sidoName + vo.gugunName + vo.dongName + vo.jibun))
                                         .append($('<td>').text(vo.buildYear))
                                         .append($('<td>').text(vo.recentPrice))
-                                        .appendTo('tbody');
+                                        .appendTo('#searchResult');
                                 });
 								displayMarkers(data);
-							}
+							},
+							wordlist()
 							, "json"
 					);
 				});
@@ -305,6 +345,7 @@
 					);
 				});
 				</script>
+				
 				</div>
 			</div>
 		</section>
