@@ -45,7 +45,7 @@ public class HappyHouseMapServiceImpl implements HappyHouseMapService {
 		List<HouseInfoDto> list = sqlSession.getMapper(HouseMapMapper.class).getAptName(aptName);
 		if (!list.isEmpty()) {
 			
-			//퀵 정렬.....ㅅㅂ
+			// 퀵정렬
 			for (HouseInfoDto h : list) {
 				double hlat = Double.parseDouble(h.getLat());
 				double hlng = Double.parseDouble(h.getLng());
